@@ -9,8 +9,13 @@ using System.Threading.Tasks;
 
 namespace Lab2_DirectOutput.Features;
 
-public class FactFeatures
+public class FactFeatures: IDisposable
 {
+    public void Dispose()
+    {
+        GC.SuppressFinalize(this);
+    }
+
     public FactModel ReadFromFile(BinaryReader br)
     {
         var model = new FactModel();

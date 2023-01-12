@@ -9,8 +9,13 @@ using System.Xml.Linq;
 
 namespace Lab2_DirectOutput.Features;
 
-public class RuleFeatures
+public class RuleFeatures : IDisposable
 {
+    public void Dispose()
+    {
+        GC.SuppressFinalize(this);
+    }
+
     public RuleModel ReadFromFile(BinaryReader br)
     {
         var rule = new RuleModel();

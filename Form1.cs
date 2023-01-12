@@ -1,10 +1,17 @@
-namespace Lab2_DirectOutput
+using Lab2_DirectOutput.Interfaces.Services;
+using Lab2_DirectOutput.Models;
+
+namespace Lab2_DirectOutput;
+
+public partial class Form1 : Form
 {
-    public partial class Form1 : Form
+    private FormDataModel _formData;
+    private IDialogService _dialogSrv;
+
+    public Form1(IDialogService dialogSrv)
     {
-        public Form1()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
+        _formData = new FormDataModel();
+        _dialogSrv = dialogSrv;
     }
 }
