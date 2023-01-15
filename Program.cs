@@ -14,7 +14,9 @@ internal static class Program
     {
         // DI
         var services = new ServiceCollection()
-            .AddTransient<IDialogService, DialogService>();
+            .AddTransient<IDialogService, DialogService>()
+            .AddTransient<IFactService, FactService>()
+            ;
 
         using var serviceProvider = services.BuildServiceProvider();
         
@@ -22,7 +24,8 @@ internal static class Program
         // see https://aka.ms/applicationconfiguration.
         ApplicationConfiguration.Initialize();
         Application.Run(new Form1(
-            serviceProvider.GetRequiredService<IDialogService>()
+            serviceProvider.GetRequiredService<IDialogService>(),
+            serviceProvider.GetRequiredService<IFactService>()
             ));
     }
 }

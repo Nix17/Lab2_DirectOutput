@@ -1,5 +1,6 @@
 using Lab2_DirectOutput.Interfaces.Services;
 using Lab2_DirectOutput.Models;
+using System.Text;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 
@@ -9,12 +10,17 @@ public partial class Form1 : Form
 {
     private FormDataModel _formData;
     private IDialogService _dialogSrv;
+    private IFactService _factSrv;
 
-    public Form1(IDialogService dialogSrv)
+    public Form1(
+        IDialogService dialogSrv,
+        IFactService factSrv
+    )
     {
         InitializeComponent();
-        _formData = new FormDataModel();
         _dialogSrv = dialogSrv;
+        _factSrv = factSrv;
+        _formData = new FormDataModel();
         splitContainer1.Panel2.Enabled = false;
     }
 
@@ -48,5 +54,20 @@ public partial class Form1 : Form
     private void uncheckAll_Click(object sender, EventArgs e)
     {
         for (int i = 0; i < initialFactsCheckedListBox.Items.Count; ++i) initialFactsCheckedListBox.SetItemChecked(i, false);
+    }
+
+    private void drawConclusionBtn_Click(object sender, EventArgs e)
+    {
+        List<FactModel> initialFacts = new List<FactModel>();
+        foreach (FactModel item in initialFactsCheckedListBox.CheckedItems)
+        {
+            initialFacts.Add(item);
+        }
+        FactModel targetFact = (FactModel)targetFactComboBox.SelectedItem;
+
+        StringBuilder sb = new StringBuilder();
+        this._factSrv.CheckFact(initialFacts, targetFact, sb);
+        txtBoxResult.Clear();
+        txtBoxResult.AppendText(sb.ToString());
     }
 }

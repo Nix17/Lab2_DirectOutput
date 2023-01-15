@@ -33,7 +33,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtBoxResult = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -113,7 +113,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.txtBoxResult);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
@@ -122,17 +122,17 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Result";
             // 
-            // textBox1
+            // txtBoxResult
             // 
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox1.Location = new System.Drawing.Point(3, 23);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.PlaceholderText = "Empty...";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBox1.Size = new System.Drawing.Size(745, 579);
-            this.textBox1.TabIndex = 0;
+            this.txtBoxResult.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtBoxResult.Location = new System.Drawing.Point(3, 23);
+            this.txtBoxResult.Multiline = true;
+            this.txtBoxResult.Name = "txtBoxResult";
+            this.txtBoxResult.PlaceholderText = "Empty...";
+            this.txtBoxResult.ReadOnly = true;
+            this.txtBoxResult.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txtBoxResult.Size = new System.Drawing.Size(745, 579);
+            this.txtBoxResult.TabIndex = 0;
             // 
             // groupBox2
             // 
@@ -222,6 +222,7 @@
             this.drawConclusionBtn.TabIndex = 1;
             this.drawConclusionBtn.Text = "Draw a conclusion";
             this.drawConclusionBtn.UseVisualStyleBackColor = false;
+            this.drawConclusionBtn.Click += new System.EventHandler(this.drawConclusionBtn_Click);
             // 
             // groupBox4
             // 
@@ -259,7 +260,7 @@
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Direct output";
+            this.Text = "Direct output. Произведение достоверности правила и достоверность посылки";
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -286,7 +287,7 @@
         private Panel panel2;
         private SplitContainer splitContainer1;
         private GroupBox groupBox1;
-        private TextBox textBox1;
+        private TextBox txtBoxResult;
         private GroupBox groupBox2;
         private SplitContainer splitContainer2;
         private GroupBox groupBox3;
