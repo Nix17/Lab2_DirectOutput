@@ -15,8 +15,8 @@ public class DialogService : IDialogService
 {
     public bool OpenLoadDataDialog(OpenFileDialog dialog, FormDataModel data)
     {
-        dialog.Title = "Выберите файл с базой знаний";
-        dialog.Filter = "Базы знаний (*.kdb)|*.kdb|Все файлы (*.*)|*.*";
+        dialog.Title = "Select a file with basic information";
+        dialog.Filter = "Knowledge bases (*.kdb)|*.kdb|Все файлы (*.*)|*.*";
         if (dialog.ShowDialog() != DialogResult.OK) return false;
 
         data.FileName = dialog.FileName;
@@ -28,9 +28,9 @@ public class DialogService : IDialogService
             try
             {
                 BinaryReader br = new BinaryReader(fileStream);
-                if (br.ReadInt32() != 2000590686) throw new Exception("неверный заголовок.");
+                if (br.ReadInt32() != 2000590686) throw new Exception("Wrong title");
 
-                if (br.ReadInt32() != 268435456) throw new Exception("неверная версия базы знаний.");
+                if (br.ReadInt32() != 268435456) throw new Exception("Incorrect knowledge base version");
 
                 int num1 = br.ReadInt32();
                 data.Facts.Clear();
@@ -57,14 +57,12 @@ public class DialogService : IDialogService
                 }
 
                 data.FileIsEdited = false;
-                data.RulesCopy = new ArrayList(data.Rules);
+                data.RulesCopy = new List<RuleModel>(data.Rules);
 
-                //UpdateWindowTitle();
-                //UpdateAllFactsList();
             }
             catch (Exception ex)
             {
-                int num = (int)MessageBox.Show("Ошибка при загрузке файла: " + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                int num = (int)MessageBox.Show("File upload error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
                 return false;
             }
             fileStream.Close();
@@ -79,16 +77,16 @@ public class DialogService : IDialogService
 
     public void ShowError(string message)
     {
-        MessageBox.Show(message, "Ошибка!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        MessageBox.Show(message, "Error!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
     }
 
     public void ShowSuccess(string message)
     {
-        MessageBox.Show(message, "Ошибка!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        MessageBox.Show(message, "Success!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
     }
 
     public void ShowWarning(string message)
     {
-        MessageBox.Show(message, "Ошибка!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        MessageBox.Show(message, "Warning!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
     }
 }

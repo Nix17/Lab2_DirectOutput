@@ -19,7 +19,7 @@ public class RuleFeatures : IDisposable
     public RuleModel ReadFromFile(BinaryReader br)
     {
         var rule = new RuleModel();
-
+        Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
         Encoding encoding = Encoding.GetEncoding("windows-1251");
         rule.Id = br.ReadInt32();
         int length1 = br.ReadInt32();
@@ -48,6 +48,7 @@ public class RuleFeatures : IDisposable
 
     public void ReadFromFile(BinaryReader br, RuleModel rule)
     {
+        Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
         Encoding encoding = Encoding.GetEncoding("windows-1251");
         rule.Id = br.ReadInt32();
         int length1 = br.ReadInt32();

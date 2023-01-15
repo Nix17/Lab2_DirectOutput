@@ -1,11 +1,11 @@
-﻿using Lab2_DirectOutput.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using Lab2_DirectOutput.Models;
 
 namespace Lab2_DirectOutput.Features;
 
@@ -19,6 +19,7 @@ public class FactFeatures: IDisposable
     public FactModel ReadFromFile(BinaryReader br)
     {
         var model = new FactModel();
+        Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
         Encoding encoding = Encoding.GetEncoding("windows-1251");
         model.Id = br.ReadInt32();
 
@@ -54,6 +55,7 @@ public class FactFeatures: IDisposable
 
     public void ReadFromFile(BinaryReader br, FactModel model)
     {
+        Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
         Encoding encoding = Encoding.GetEncoding("windows-1251");
         model.Id = br.ReadInt32();
 
