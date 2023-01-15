@@ -9,5 +9,12 @@ namespace Lab2_DirectOutput.Interfaces.Services;
 
 public interface IFactService
 {
-    void CheckFact(List<FactModel> initialFacts, FactModel targetFact, StringBuilder output);
+    //void CheckFact(List<FactModel> initialFacts, FactModel targetFact, StringBuilder output);
+    void CheckFact(
+        TreeView RSTree,
+        Label result,
+        FormDataModel formData,
+        List<FactModel> checkedFacts,
+        FactModel targetFact
+    );
 }

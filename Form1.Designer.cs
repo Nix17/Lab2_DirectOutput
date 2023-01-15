@@ -33,7 +33,9 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtBoxResult = new System.Windows.Forms.TextBox();
+            this.ResultLabel = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.treeViewResult = new System.Windows.Forms.TreeView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -113,7 +115,9 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.txtBoxResult);
+            this.groupBox1.Controls.Add(this.ResultLabel);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.treeViewResult);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
@@ -122,17 +126,32 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Result";
             // 
-            // txtBoxResult
+            // ResultLabel
             // 
-            this.txtBoxResult.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtBoxResult.Location = new System.Drawing.Point(3, 23);
-            this.txtBoxResult.Multiline = true;
-            this.txtBoxResult.Name = "txtBoxResult";
-            this.txtBoxResult.PlaceholderText = "Empty...";
-            this.txtBoxResult.ReadOnly = true;
-            this.txtBoxResult.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtBoxResult.Size = new System.Drawing.Size(745, 579);
-            this.txtBoxResult.TabIndex = 0;
+            this.ResultLabel.AutoSize = true;
+            this.ResultLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.ResultLabel.Location = new System.Drawing.Point(73, 570);
+            this.ResultLabel.Name = "ResultLabel";
+            this.ResultLabel.Size = new System.Drawing.Size(21, 20);
+            this.ResultLabel.TabIndex = 2;
+            this.ResultLabel.Text = "...";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 570);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(52, 20);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Result:";
+            // 
+            // treeViewResult
+            // 
+            this.treeViewResult.Dock = System.Windows.Forms.DockStyle.Top;
+            this.treeViewResult.Location = new System.Drawing.Point(3, 23);
+            this.treeViewResult.Name = "treeViewResult";
+            this.treeViewResult.Size = new System.Drawing.Size(745, 523);
+            this.treeViewResult.TabIndex = 0;
             // 
             // groupBox2
             // 
@@ -287,7 +306,6 @@
         private Panel panel2;
         private SplitContainer splitContainer1;
         private GroupBox groupBox1;
-        private TextBox txtBoxResult;
         private GroupBox groupBox2;
         private SplitContainer splitContainer2;
         private GroupBox groupBox3;
@@ -298,5 +316,8 @@
         private GroupBox groupBox4;
         private ComboBox targetFactComboBox;
         private OpenFileDialog openFileDialog1;
+        private TreeView treeViewResult;
+        private Label ResultLabel;
+        private Label label1;
     }
 }

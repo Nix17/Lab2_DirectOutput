@@ -27,6 +27,7 @@ public partial class Form1 : Form
     private void UpdateFactsCheckedListBox()
     {
         initialFactsCheckedListBox.Items.Clear();
+        targetFactComboBox.Items.Clear();
         foreach (var fact in _formData.Facts)
         {
             if (fact.Type == FactType.ForQuestion) initialFactsCheckedListBox.Items.Add(fact, true);
@@ -58,16 +59,24 @@ public partial class Form1 : Form
 
     private void drawConclusionBtn_Click(object sender, EventArgs e)
     {
-        List<FactModel> initialFacts = new List<FactModel>();
-        foreach (FactModel item in initialFactsCheckedListBox.CheckedItems)
+        try
         {
-            initialFacts.Add(item);
-        }
-        FactModel targetFact = (FactModel)targetFactComboBox.SelectedItem;
+            if (initialFactsCheckedListBox.CheckedItems.Count == 0) throw new Exception("You need to choose the facts!");
 
-        StringBuilder sb = new StringBuilder();
-        this._factSrv.CheckFact(initialFacts, targetFact, sb);
-        txtBoxResult.Clear();
-        txtBoxResult.AppendText(sb.ToString());
+            List<FactModel> initialFacts = new List<FactModel>();
+            foreach (FactModel item in initialFactsCheckedListBox.CheckedItems)
+            {
+                initialFacts.Add(item);
+            }
+            FactModel targetFact = (FactModel)targetFactComboBox.SelectedItem;
+
+            StringBuilder sb = new StringBuilder();
+            treeViewResult.Nodes.Clear();
+            this._factSrv.CheckFact(treeViewResult, ResultLabel, _formData, initialFacts, targetFact);
+        }
+        catch (Exception ex)
+        {
+            _dialogSrv.ShowError(ex.Message);
+        }
     }
 }
